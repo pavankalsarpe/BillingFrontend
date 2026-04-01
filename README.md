@@ -1,5 +1,89 @@
 # React + TypeScript + Vite
+# Billing Dashboard
 
+A simple billing dashboard built with React, TypeScript, Redux Toolkit, and Tailwind CSS.
+
+## Prerequisites
+
+- Node.js 18+ (recommended: latest LTS)
+- npm (comes with Node.js)
+
+## Setup Instructions
+
+1. Open terminal in `BillingProject`.
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start development server:
+
+```bash
+npm run dev
+```
+
+4. Open the local URL shown in terminal (usually `http://localhost:5173`).
+
+## Available Scripts
+
+- `npm run dev` - Runs app in development mode with hot reload
+- `npm run build` - Type-checks and creates production build
+- `npm run preview` - Previews the production build locally
+- `npm run lint` - Runs ESLint checks
+
+## Tech Stack
+
+- React 19
+- TypeScript
+- Redux Toolkit + React Redux
+- Vite
+- Tailwind CSS
+
+## How It Works
+
+The application is split into three UI sections:
+
+- `Product List`: Shows fixed product data and allows adding items to the cart.
+- `Cart`: Displays selected items with quantity increase/decrease controls.
+- `Bill Summary`: Shows offer details, applied savings, subtotal, and final total.
+
+State management uses Redux Toolkit:
+
+- `cartSlice` stores cart items.
+- Actions (`addToCart`, `increaseQuantity`, `decreaseQuantity`) update quantity and remove entries when quantity reaches zero.
+
+Pricing and discount calculations are handled in `src/utils/pricing.ts`:
+
+- Calculates subtotal from cart items.
+- Applies eligible offers.
+- Computes total savings and final payable amount.
+
+## Project Structure
+
+```text
+src/
+  app/
+    store.ts
+  components/
+    ProductList.tsx
+    Cart.tsx
+    BillSummary.tsx
+  features/
+    cart/
+      cartSlice.ts
+  types/
+    index.ts
+  utils/
+    pricing.ts
+  App.tsx
+  main.tsx
+```
+
+## Notes
+
+- Currency is formatted using INR locale (`en-IN`).
+- Products are currently defined as static data in `src/App.tsx`.
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
